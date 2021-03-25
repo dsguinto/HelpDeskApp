@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<supportTicket xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Assignment1_SupportTicket.xsd">
+  <ticket userId="53021" ticketId="3134103" status="resolved">
+    <subject>Refund Inquiry</subject>
+    <issueDate>2021-01-20T15:43:32</issueDate>
+    <messages>
+      <message userId="53021">
+        <messageText>Hi, I returned a product a week ago but still do not see the refund on my account.</messageText>
+        <messageDate>2021-01-20T15:43:32</messageDate>
+      </message>
+      <message userId="49201">
+        <messageText>Hi Mr. Marquez, we apologize for the delay. Your refund will appear in 3-5 business days.</messageText>
+        <messageDate>2021-01-20T15:44:49</messageDate>
+      </message>
+      <message userId="53021">
+        <messageText>Sounds good,thank you.</messageText>
+        <messageDate>2021-01-20T15:45:10</messageDate>
+      </message>
+    </messages>
+  </ticket>
+  <ticket userId="52912" ticketId="3502931" status="on-going">
+    <subject>Shipping Inquiry</subject>
+    <issueDate>2021-01-31T09:23:54</issueDate>
+    <messages>
+      <message userId="52912">
+        <messageText>Hello, I was wondering when I item will arrive. I ordered it 30 days ago.</messageText>
+        <messageDate>2021-01-31T09:23:54</messageDate>
+      </message>
+      <message userId="49201">
+        <messageText>Hi Mr. Johnson, we apologize for the delay. We will look into your order and get back to you soon.</messageText>
+        <messageDate>2021-01-31T09:24:59</messageDate>
+      </message>
+      <message userId="52912">
+        <messageText>No problem, let me know when you find out.</messageText>
+        <messageDate>2021-01-31T09:25:40</messageDate>
+      </message>
+    </messages>
+  </ticket>
+  <ticket userId="53021" ticketId="362621" status="on-going">
+    <subject>Tracking Issue</subject>
+    <issueDate>2021-03-24T00:01:30</issueDate>
+    <messages>
+      <message userId="53021">
+        <messageText>Hello, I haven't received my tracking number yet. Is there any way to get updates?</messageText>
+        <messageDate>2021-03-24T00:01:30</messageDate>
+      </message>
+    </messages>
+  </ticket>
+  <ticket userId="52912" ticketId="304421" status="on-going">
+    <subject>Return Policy Question</subject>
+    <issueDate>2021-03-24T14:53:32</issueDate>
+    <messages>
+      <message userId="52912">
+        <messageText>Hi! I was just wondering what your return policy is.</messageText>
+        <messageDate>2021-03-24T14:53:32</messageDate>
+      </message>
+      <message userId="49201">
+        <messageText>Hello, our return policy is 14 days from original date of purchase. Hope this helps.</messageText>
+        <messageDate>2021-03-24T23:45:24</messageDate>
+      </message>
+    </messages>
+  </ticket>
+</supportTicket>

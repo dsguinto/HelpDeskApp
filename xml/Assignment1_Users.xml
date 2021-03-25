@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<users xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Assignment1_Users.xsd">
+    <user userType="client" userId="53021" title="Mr">
+        <name>
+            <first>Alex</first>
+            <last>Martinez</last>
+        </name>
+        <email>alexmartinez@gmail.com</email>
+        <username>A_Martinez92</username>
+        <password>c4313d680f93b1d8c3c02d57429b3a63</password>
+        <location>
+            <country>Canada</country>
+            <city>Toronto</city>
+        </location>
+    </user>
+    <user userType="client" userId="52912" title="Mr">
+        <name>
+            <first>Owen</first>
+            <last>Johnson</last>
+        </name>
+        <email>owenjohnson@yahoo.com</email>
+        <username>owen_johnson</username>
+        <password>313998472c1986bae0b1046fc24d3e9a</password>
+        <location>
+            <country>Canada</country>
+            <city>Brampton</city>
+        </location>
+    </user>
+    <user userType="admin" userId="49201" title="Ms">
+        <name>
+            <first>Joanna</first>
+            <last>Smith</last>
+        </name>
+        <email>joannasmith96@hotmail.com</email>
+        <username>jsmith01</username>
+        <password>8c36ceeec2eae4f24e5ef80737add436</password>
+        <location>
+            <country>USA</country>
+            <city>New York</city>
+        </location>
+    </user>
+</users>

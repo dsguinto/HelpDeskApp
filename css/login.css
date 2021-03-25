@@ -1,0 +1,23 @@
+.login {
+  margin: 3em auto 0 auto;
+  width: 50%;
+  background-color: lightgrey;
+  padding: 1em 2em;
+  border-radius: 25px;
+}
+
+.login__field {
+  margin: 1em auto;
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.login__field label {
+  margin-right: 1em;
+}
+
+.login__field input {
+  width: 150px;
+}
