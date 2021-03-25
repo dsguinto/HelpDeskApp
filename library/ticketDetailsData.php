@@ -150,7 +150,4 @@ $styleDisplayMsg = "style='display:none;'";
         $styleDisplayForm = "style='display:block;'";
     }
 
-echo $status
-// var_dump($checkStatus);
-
 ?>
