@@ -50,7 +50,7 @@
       </message>
     </messages>
   </ticket>
-  <ticket userId="52912" ticketId="304421" status="on-going">
+  <ticket userId="52912" ticketId="304421" status="resolved">
     <subject>Return Policy Question</subject>
     <issueDate>2021-03-24T14:53:32</issueDate>
     <messages>
@@ -61,6 +61,10 @@
       <message userId="49201">
         <messageText>Hello, our return policy is 14 days from original date of purchase. Hope this helps.</messageText>
         <messageDate>2021-03-24T23:45:24</messageDate>
+      </message>
+      <message userId="52912">
+        <messageText>Thank you for the info!</messageText>
+        <messageDate>2021-03-25T12:27:39</messageDate>
       </message>
     </messages>
   </ticket>

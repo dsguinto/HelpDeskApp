@@ -21,6 +21,8 @@ $xpath = new DOMXPath($doc);
 //Uses XPath to find the ticket element that matches the ticketId associated with the ticket wanting to be viewed (to be used in foreach loops to gather data within it)
 $ticketDetails = $xpath->query("//ticket[@ticketId='$ticketId']");
 
+($ticketDetails);
+
 //Adds message to XML file when submitted
 if (isset($_POST["submitMessage"])){
     //Sets variables for POST data from form
@@ -28,14 +30,6 @@ if (isset($_POST["submitMessage"])){
     
     //Saves current ticketId as a session data
     $_SESSION['post-data']['id'] = $_POST["id"];
-
-    // ------------------------------- TO BE DELETED ------------------------------
-    // $_SESSION['post-data'] = $_POST;
-    // $_SESSION['post-data'] = $_POST;
-    // echo $postMessage . "hey";
-    // echo $id;
-    // echo "</br>";
-    // var_dump($_SESSION['post-data']);
 
     //Checks to see if input fields are empty. If empty, displays error message.
     if (empty($postMessage)){
@@ -83,6 +77,8 @@ $id = $ticket->attributes->getNamedItem("ticketId")->nodeValue;
 $subject = $ticket->getElementsByTagName("subject")->item(0)->nodeValue;
 $date = new DateTime($ticket->getElementsByTagName("issueDate")->item(0)->nodeValue);
 $dateCreated = date_format($date, 'Y-m-d,  H:i:s');
+
+$status = $ticket->attributes->getNamedItem("status")->nodeValue;
 }
 
 //Loops through message element for corresponding ticket to display message data
@@ -98,5 +94,63 @@ foreach ($messageDetails  as $ticket){
     $rows .= '<p class="dateSent">'  . $dateSent . '</p>';
     $rows .= '</div>';
 }
+
+//     $styleDisplayMsg = "style='display:block;'";
+//     $styleOpenBtn = "style='display:block;'";
+//     $styleCloseBtn = "style='display:none;";
+//     $styleDisplayForm = "style='display:none;";
+    
+
+if (isset($_POST["closeTicket"])){
+    $_SESSION['post-data']['id'] = $_POST["id"];
+
+    //Loops through each ticket node and appends message to corresponding ticket node
+    foreach ($ticketDetails as $ticket){
+        $ticket->setAttribute('status', 'resolved');
+    }
+
+    //Saves updates to xml file
+    $doc->save("xml/Assignment1_SupportTicket.xml");
+
+    //Redirects user to respective page (in this situation, same page but updated)
+    header( "Location: {$_SERVER['REQUEST_URI']}", true, 303 );
+    exit();
+}
+
+if (isset($_POST["openTicket"])){
+    $_SESSION['post-data']['id'] = $_POST["id"];
+
+    //Loops through each ticket node and appends message to corresponding ticket node
+    foreach ($ticketDetails as $ticket){
+        $ticket->setAttribute('status', 'on-going');
+    }
+
+    //Saves updates to xml file
+    $doc->save("xml/Assignment1_SupportTicket.xml");
+
+    //Redirects user to respective page (in this situation, same page but updated)
+    header( "Location: {$_SERVER['REQUEST_URI']}", true, 303 );
+    exit();
+}
+
+
+
+
+$styleCloseBtn = "style='display:none;'";
+$styleOpenBtn = "style='display:none;'";
+$styleDisplayForm = "style='display:none;'";
+$styleDisplayMsg = "style='display:none;'";
+
+    if ($status == "resolved"){
+        $styleDisplayMsg = "style='display:block;'";
+        $styleOpenBtn = "style='display:block;'";
+    }
+    else if ($status =="on-going"){
+        $styleCloseBtn = "style='display:block;'";
+        $styleDisplayForm = "style='display:block;'";
+    }
+
+echo $status
+// var_dump($checkStatus);
 
 ?>

@@ -31,11 +31,13 @@ else{
 
 //Sends user back to respective ticket list view dependant on user type
 $backLocation = "";
+$style = "";
 if (($userType == "admin")){
-    $backLocation = "adminHome";
+    $backLocation = "adminHome.php";
 }
 else if (($userType == "client")){
-    $backLocation = "userHome";
+    $style = "style='display:none;'";
+    $backLocation = "userHome.php";
 }
 
 //Connects ticketDetailsData.php for functionality
@@ -51,6 +53,7 @@ require_once "library/ticketDetailsData.php";
         <title>HelpDesk: Online Support Ticket System</title>
         <script src="https://kit.fontawesome.com/2956115494.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="css/global.css" />
+        <link rel="stylesheet" href="css/ticketDetails.css" />
     </head>
     <header>
         <h1>HelpDesk<i class="fas fa-hands-helping"></i></h1>
@@ -62,28 +65,41 @@ require_once "library/ticketDetailsData.php";
     <body>
         <div class="ticketDetails">
             <div class="ticketDetails__info">
-                <h2>Ticket #<?= $ticketId ?> Details</h2>
-                <a class="backBtn" href="<?= $backLocation ?>.php"><i class="fas fa-caret-left"></i> Back to Tickets</a>
-                <p><b>Created On:</b> <?= $dateCreated ?></p>
-                <p><b>Subject:</b> <?= $subject ?></p>
+                <div class="ticketDetails__info_text">
+                    <h2>Ticket #<?= $ticketId ?> Details</h2>
+                    <a class="backBtn" href="<?= $backLocation ?>"><i class="fas fa-caret-left"></i> Back to Tickets</a>
+                    <p><b>Created On:</b> <?= $dateCreated ?></p>
+                    <p><b>Subject:</b> <?= $subject ?></p>
+                </div>
+                <div class="ticketDetails__info_button" <?php echo $style;?>>
+                    <form method="POST">
+                        <div class=formSection  <?php echo $styleCloseBtn;?>>
+                            <input type="hidden" name="id" value="<?= $ticketId ?>"/>
+                            <input type="submit" class="closeBtn" name="closeTicket" value="Close Ticket" />
+                        </div>
+                        <div class=formSection  <?php echo $styleOpenBtn ;?>>
+                            <input type="hidden" name="id" value="<?= $ticketId ?>"/>
+                            <input type="submit" class="openBtn" name="openTicket" value="Re-Open Ticket" />
+                        </div>
+                    </form>
+                </div>
             </div>
             <?php
                 echo $rows;
             ?>
             <div class="ticketDetails__inputs">
-                <form method="POST" action="">
-                    <div class="messageForm">
-                        <label for="postMessage">Post a message: </label>
-                        <textarea class="messageForm__text" type="textbox" name="postMessage" id="postMessage" placeholder="Reply..."></textarea>
-                        <div style="flex-basis: 100%;"><p style="color:red; text-align: center; margin: 1em auto;"><?= $error ?></p></div>
-                        <input type="hidden" name="id" value="<?= $ticketId ?>"/>
-                        <input type="submit" class="inputBtn" name="submitMessage" value="Send" />
-                    </div> 
-                </form>
-                <!-- Look into implementing "Close Ticket" button that hides text box. -->
-                <!-- <div class="close">
-                    <a>Close Ticket</a>
-                </div> -->
+                <div class="messageForm" <?php echo $styleDisplayForm;?> >
+                    <form method="POST" action="">
+                            <label for="postMessage">Post a message: </label>
+                            <textarea class="messageForm__text" type="textbox" name="postMessage" id="postMessage" placeholder="Reply..."></textarea>
+                            <div style="flex-basis: 100%;"><p style="color:red; text-align: center; margin: 1em auto;"><?= $error ?></p></div>
+                            <input type="hidden" name="id" value="<?= $ticketId ?>"/>
+                            <input type="submit" class="inputBtn" name="submitMessage" value="Send" />
+                    </form>
+                </div> 
+                <div class="messageForm" <?php echo $styleDisplayMsg;?>>
+                    <h3>This ticket has been closed</h3>
+                </div> 
             </div>
         </div>
     </body>

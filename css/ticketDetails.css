@@ -1,0 +1,100 @@
+/*** TICKET DETAILS PAGE STYLING ***/
+.backBtn {
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+  margin-bottom: 1em;
+  transition: 300ms;
+}
+
+.backBtn:hover {
+  color: purple;
+}
+
+.ticketDetails {
+  margin: 3em auto;
+  width: 80%;
+  background-color: #e5fffa;
+  padding: 2em;
+  border-radius: 25px;
+}
+
+.ticketDetails__info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+}
+
+.ticketDetails__info_text {
+  padding-bottom: 1em;
+}
+
+.closeBtn,
+.openBtn {
+  color: white;
+  background-color: #9d538c;
+  font-family: "Cabin", sans-serif;
+  font-size: 18px;
+  text-decoration: none;
+  border: none;
+  border-radius: 10px;
+  padding: 1em;
+  transition: 100ms;
+}
+
+.closeBtn:hover,
+.openBtn:hover {
+  background-color: #ff7ae2;
+}
+
+.ticketDetails__info p {
+  margin: 1em auto;
+}
+
+.messageText {
+  background-color: #a3abbd;
+  padding: 1em;
+  margin: 1em;
+  border-radius: 15px;
+}
+
+.messageForm {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  align-items: center;
+}
+
+.messageForm form {
+  width: 100%;
+}
+
+.messageForm label {
+  vertical-align: top;
+}
+
+.messageForm textarea,
+.messageForm input {
+  margin-left: 1em;
+}
+
+.messageForm__text {
+  width: 50%;
+  height: 50px;
+  resize: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.userId {
+  font-size: 12px;
+  margin: 0;
+}
+
+.dateSent {
+  font-size: 12px;
+  margin: 0;
+  float: right;
+}

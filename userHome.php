@@ -30,6 +30,7 @@ require_once "library/userData.php";
         <title>HelpDesk: Online Support Ticket System</title>
         <script src="https://kit.fontawesome.com/2956115494.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="css/global.css" />
+        <link rel="stylesheet" href="css/user_admin.css" />
     </head>
     <header>
         <h1>HelpDesk<i class="fas fa-hands-helping"></i></h1>

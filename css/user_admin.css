@@ -1,0 +1,75 @@
+/*** USER/ADMIN VIEW STYLING ***/
+.ticketList,
+.ticketCreate {
+  margin: 3em auto;
+  width: 80%;
+  background-color: #e5fffa;
+  padding: 2em;
+  border-radius: 25px;
+}
+
+.ticketCreate__field {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-bottom: 1em;
+  margin: 0 auto;
+}
+
+.ticketCreate__field label {
+  width: 51%;
+}
+
+#subject {
+  width: 50%;
+}
+
+.messageForm__text {
+  width: 50%;
+  height: 50px;
+  resize: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+/*** TABLES STYLING ***/
+table {
+  text-align: left;
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #d8e6df;
+}
+
+thead {
+  background-color: #344b48;
+  color: white;
+}
+
+tr {
+  border-bottom: 1px solid black;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #96b1ac;
+}
+
+th,
+td {
+  padding: 1em;
+}
+
+.ticketDetailsBtn,
+.inputBtn {
+  font-family: "Cabin", sans-serif;
+  background-color: #344b48;
+  color: white;
+  padding: 0.5em 1em;
+  border: 1px solid black;
+  border-radius: 10px;
+  transition: 100ms;
+}
+
+.ticketDetailsBtn:hover,
+.inputBtn:hover {
+  cursor: pointer;
+  background-color: grey;
+}
