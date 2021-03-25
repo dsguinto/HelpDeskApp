@@ -20,11 +20,12 @@ $xmlPassword = "";
 $firstname = "";
 $error = "";
 
+
 //Checks if login button is clicked
 if (isset($_POST["submitLogin"])){
     //Saves POST data as variables
     $username = $_POST["username"];
-    $password = $_POST["password"];
+    $password = md5($_POST["password"]);
 
     //Loops through each user element in XML file to check/gather necessary data
     foreach ($users as $user){

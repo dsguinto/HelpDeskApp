@@ -21,8 +21,6 @@ $xpath = new DOMXPath($doc);
 //Uses XPath to find the ticket element that matches the ticketId associated with the ticket wanting to be viewed (to be used in foreach loops to gather data within it)
 $ticketDetails = $xpath->query("//ticket[@ticketId='$ticketId']");
 
-($ticketDetails);
-
 //Adds message to XML file when submitted
 if (isset($_POST["submitMessage"])){
     //Sets variables for POST data from form
@@ -64,7 +62,7 @@ if (isset($_POST["submitMessage"])){
     }
 }
 
-//More XPath queries
+//XPath query to check message node of ticket with specified ticketId value
 $messageDetails =  $xpath->query("//ticket[@ticketId='$ticketId']//message");
 
 //Initialize variables
@@ -94,14 +92,10 @@ foreach ($messageDetails  as $ticket){
     $rows .= '<p class="dateSent">'  . $dateSent . '</p>';
     $rows .= '</div>';
 }
-
-//     $styleDisplayMsg = "style='display:block;'";
-//     $styleOpenBtn = "style='display:block;'";
-//     $styleCloseBtn = "style='display:none;";
-//     $styleDisplayForm = "style='display:none;";
     
-
+//If Close Ticket button is clicked, changes the status of the ticket to "Resolved" (Admin only)
 if (isset($_POST["closeTicket"])){
+     //Saves current ticketId as a session data
     $_SESSION['post-data']['id'] = $_POST["id"];
 
     //Loops through each ticket node and appends message to corresponding ticket node
@@ -117,7 +111,9 @@ if (isset($_POST["closeTicket"])){
     exit();
 }
 
+//If Open Ticket button is clicked, changes the status of the ticket to "On-going" (Admin only)
 if (isset($_POST["openTicket"])){
+     //Saves current ticketId as a session data
     $_SESSION['post-data']['id'] = $_POST["id"];
 
     //Loops through each ticket node and appends message to corresponding ticket node
@@ -133,14 +129,13 @@ if (isset($_POST["openTicket"])){
     exit();
 }
 
-
-
-
+//Initializes display of Close/Open ticket feature
 $styleCloseBtn = "style='display:none;'";
 $styleOpenBtn = "style='display:none;'";
 $styleDisplayForm = "style='display:none;'";
 $styleDisplayMsg = "style='display:none;'";
 
+//Checks status of ticket, displays corresponding button/message depending on status
     if ($status == "resolved"){
         $styleDisplayMsg = "style='display:block;'";
         $styleOpenBtn = "style='display:block;'";

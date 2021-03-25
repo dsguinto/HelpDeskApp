@@ -3,6 +3,7 @@
 //Connects loginData.php to gather session data from login
 require_once "library/loginData.php";
 
+
 ?>
 
 <!--WEBPAGE INTERFACE-->
