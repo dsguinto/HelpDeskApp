@@ -1,8 +1,9 @@
 <?php
 
 //Gets values from login data
-include "loginData.php";
-include "adminData.php";
+require_once "library/loginData.php";
+require_once "library/adminData.php";
+require_once "library/userData.php";
 
 //Starts session
 session_start();
@@ -18,6 +19,9 @@ $userId = $_SESSION['userId'];
 $firstname = $_SESSION['firstname'];
 $userType = $_SESSION['userType'];
 
+//Checks to see if POST data exist (from initial 'View Ticket' button on list page)
+//If POST data exist from that page, it will use the corresponding ticketId to access the respective ticket view
+//If POST data does not exist (e.g destroyed from header redirect), it will recall the ticketId saved within the session (set during message submit)
 if (empty($_POST)) {
     $ticketId = $_SESSION['post-data']['id'];
 }
@@ -25,12 +29,8 @@ else{
     $ticketId = $_POST['id'];
 }
 
-// var_dump($_SESSION['post-data']);
-// var_dump($ticketId);
-
-//Initialize variable
+//Sends user back to respective ticket list view dependant on user type
 $backLocation = "";
-
 if (($userType == "admin")){
     $backLocation = "adminHome";
 }
@@ -38,103 +38,12 @@ else if (($userType == "client")){
     $backLocation = "userHome";
 }
 
-//Create DomDocument and loads xml file to be read
-$doc = new DOMDocument();
-
-//Formats new XML content
-$doc->preserveWhiteSpace = false;
-$doc->formatOutput = true;
-
-//Loads XML file
-$doc->load("xml/Assignment1_SupportTicket.xml");
-
-//Sets variables
-$error = "";
-$postMessage = $doc->getElementsByTagName("postMessage");
-$date = new DateTime("NOW", new DateTimeZone('America/Toronto'));
-
-//Sets up XPath 
-$xpath = new DOMXPath($doc);
-
-//Uses XPath to check ticket elements that contain the same userId of the user that is logged in (used in foreach loop)
-$ticketDetails = $xpath->query("//ticket[@ticketId='$ticketId']");
-
-//Adds message to XML file when submitted
-if (isset($_POST["submitMessage"])){
-    $postMessage = $_POST["postMessage"];
-    $_SESSION['post-data']['id'] = $_POST["id"];
-    // $_SESSION['post-data'] = $_POST;
-
-    // $_SESSION['post-data'] = $_POST;
-    // echo $postMessage . "hey";
-    // echo $id;
-    // echo "</br>";
-    // var_dump($_SESSION['post-data']);
-
-    //Checks to see if input fields are empty. If empty, displays error message.
-    if (empty($postMessage)){
-        $error = "Please input a message.";
-    }
-
-    else{
-        $error = "";
-        
-        //Creates new message element for respective ticket
-        $newMessage = $doc->createElement("message");
-        $newMessage->setAttribute("userId", $userId);
-
-        $messageText = $doc->createElement("messageText", $postMessage);
-        $messageDate = $doc->createElement("messageDate", $date->format('Y-m-d\TH:i:s'));
-
-        //Append child elements to parent elements
-        $newMessage->appendChild($messageText);
-        $newMessage->appendChild($messageDate);
-
-        //Loops through each ticket node and appends message to corresponding ticket node
-        foreach ($ticketDetails as $ticket){
-        $ticket->getElementsByTagName("messages")->item(0)->appendChild($newMessage);
-        }
-
-        //Saves updates to xml file
-        $doc->save("xml/Assignment1_SupportTicket.xml");
-
-        header( "Location: {$_SERVER['REQUEST_URI']}", true, 303 );
-        exit();
-    }
-}
-
-//More XPath queries
-$messageDetails =  $xpath->query("//ticket[@ticketId='$ticketId']//message");
-
-//Initialize variables
-$dateCreated = "";
-$rows = "";
-
-//Loops through each ticket element in xml file and gets values to display
-foreach ($ticketDetails as $ticket){
-$id = $ticket->attributes->getNamedItem("ticketId")->nodeValue;
-$subject = $ticket->getElementsByTagName("subject")->item(0)->nodeValue;
-$date = new DateTime($ticket->getElementsByTagName("issueDate")->item(0)->nodeValue);
-$dateCreated = date_format($date, 'Y-m-d,  H:i:s');
-}
-
-//Loops through message element for corresponding ticket to display message data
-foreach ($messageDetails  as $ticket){
-    $client = $ticket->attributes->getNamedItem("userId")->nodeValue;
-
-    $messageText = $ticket->getElementsByTagName("messageText")->item(0)->nodeValue;
-    $messageDate = new DateTime($ticket->getElementsByTagName("messageDate")->item(0)->nodeValue);
-    $dateSent = date_format($messageDate , 'Y-m-d,  H:i:s');
-
-    $rows .= '<div class="messageText">';
-    $rows .= '<p class="userId">User ID: '  . $client . '</p>';
-    $rows .= '<p class="messageBox">'  . $messageText . '</p>';
-    $rows .= '<p class="dateSent">'  . $dateSent . '</p>';
-    $rows .= '</div>';
-}
+//Connects ticketDetailsData.php for functionality
+require_once "library/ticketDetailsData.php";
 
 ?>
 
+<!--WEBPAGE INTERFACE-->
 <!DOCTYPE html>
 <html lang="en">
     <head>

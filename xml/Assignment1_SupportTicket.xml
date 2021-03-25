@@ -44,6 +44,10 @@
         <messageText>Hello, I haven't received my tracking number yet. Is there any way to get updates?</messageText>
         <messageDate>2021-03-24T00:01:30</messageDate>
       </message>
+      <message userId="49201">
+        <messageText>Hi, your order has not been shipped out. It will be shipped out in 2 days, we will update you with tracking once it is sent.</messageText>
+        <messageDate>2021-03-25T10:09:04</messageDate>
+      </message>
     </messages>
   </ticket>
   <ticket userId="52912" ticketId="304421" status="on-going">

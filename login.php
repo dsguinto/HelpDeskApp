@@ -1,9 +1,11 @@
 <?php
 
-include_once "loginData.php";
+//Connects loginData.php to gather session data from login
+require_once "library/loginData.php";
 
 ?>
 
+<!--WEBPAGE INTERFACE-->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -15,7 +17,7 @@ include_once "loginData.php";
     </head>
     <header>
         <h1>HelpDesk<i class="fas fa-hands-helping"></i></h1>
-        <a class="loginBtn" href="login.php">Log In</a>
+        <a class="loginBtn" href="views/login.php">Log In</a>
     </header>
     <body>
         <div class="login">

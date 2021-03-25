@@ -1,8 +1,9 @@
 <?php
 
-include "loginData.php";
-include "adminData.php";
+//Connects loginData.php to gather session data from login
+require_once "library/loginData.php";
 
+//Starts session in order to grab/store session variables
 session_start();
 
 //Checks if user is logged in, if not redirects user to login page
@@ -11,13 +12,16 @@ if($_SESSION['status']!="Logged In")
     header("Location: ./login.php");
 }
 
-//Gets userID and firstname values stored in sessino from loginData file
+//Sets user credentials session variables from login data
 $userId = $_SESSION['userId'];
 $firstname = $_SESSION['firstname'];
 
+//Connects adminData.php for page functionality
+require_once "library/adminData.php";
+
 ?>
 
-
+<!--WEBPAGE INTERFACE-->
 <!DOCTYPE html>
 <html lang="en">
     <head>

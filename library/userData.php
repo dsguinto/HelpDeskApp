@@ -1,5 +1,5 @@
 <?php
-//Create DomDocument and loads xml file to be read
+//Create DomDocument
 $doc = new DOMDocument();
 
 //Formats new XML content
@@ -9,15 +9,20 @@ $doc->formatOutput = true;
 //Loads XML file
 $doc->load("xml/Assignment1_SupportTicket.xml");
 
-//Sets variables
+//Gathers/Sets variables from XML elements
 $subject = $doc->getElementsByTagName("subject");
 $postMessage = $doc->getElementsByTagName("postMessage");
+
+//Gets current data and time (EST)
 $date = new DateTime("NOW", new DateTimeZone('America/Toronto'));
+
+//Initialize variables
 $error = "";
 
 
 //Adds new ticket to xml file when submitted
 if (isset($_POST["submitTicket"])){
+    //Sets variables for POST data from form
     $subject = $_POST["subject"];
     $postMessage = $_POST["postMessage"];
 
@@ -60,6 +65,7 @@ if (isset($_POST["submitTicket"])){
     //Saves updates to xml file
     $doc->save("xml/Assignment1_SupportTicket.xml");
 
+    //Redirects user to respective page (in this situation, same page but updated)
     header( "Location: {$_SERVER['REQUEST_URI']}", true, 303 );
     exit();
     }
