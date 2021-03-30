@@ -3,6 +3,11 @@
 //Connects loginData.php to gather session data from login
 require_once "library/loginData.php";
 
+//VALID LOGIN CREDENTIALS
+//Username: A_Martinez92, Password: Apples123 (Client)
+//Username: owen_johnson, Password: Banana123 (Client)
+//Username: jsmith01, Password: Orange123 (Admin)
+
 
 ?>
 
@@ -18,7 +23,7 @@ require_once "library/loginData.php";
     </head>
     <header>
         <h1>HelpDesk<i class="fas fa-hands-helping"></i></h1>
-        <a class="loginBtn" href="views/login.php">Log In</a>
+        <a class="loginBtn" href="login.php">Log In</a>
     </header>
     <body>
         <div class="login">
@@ -36,9 +41,10 @@ require_once "library/loginData.php";
                 </div>
                 <p style="color:red; text-align:center;"><?= $error; ?></p>
                 <div class="login__field">
-                    <input type="submit" name="submitLogin" value="Login" />
+                    <input id="loginBtn" type="submit" name="submitLogin" value="Login" />
                 </div>
             </form>
         </div>
     </body>
+    <footer>
 </html>

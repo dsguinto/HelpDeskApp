@@ -14,9 +14,11 @@
 .ticketDetails {
   margin: 3em auto;
   width: 80%;
-  background-color: #e5fffa;
+  background-color: #def2f1;
   padding: 2em;
   border-radius: 25px;
+  border-left: 3px solid #2b7a78;
+  border-bottom: 3px solid #2b7a78;
 }
 
 .ticketDetails__info {
@@ -33,8 +35,8 @@
 
 .closeBtn,
 .openBtn {
-  color: white;
-  background-color: #9d538c;
+  color: #feffff;
+  background-color: #17262a;
   font-family: "Cabin", sans-serif;
   font-size: 18px;
   text-decoration: none;
@@ -46,7 +48,9 @@
 
 .closeBtn:hover,
 .openBtn:hover {
-  background-color: #ff7ae2;
+  background-color: #3aafa9;
+  color: #17262a;
+  cursor: pointer;
 }
 
 .ticketDetails__info p {
@@ -54,7 +58,8 @@
 }
 
 .messageText {
-  background-color: #a3abbd;
+  background-color: #2b7a78;
+  color: #feffff;
   padding: 1em;
   margin: 1em;
   border-radius: 15px;

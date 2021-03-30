@@ -3,9 +3,11 @@
 .ticketCreate {
   margin: 3em auto;
   width: 80%;
-  background-color: #e5fffa;
+  background-color: #def2f1;
   padding: 2em;
   border-radius: 25px;
+  border-left: 3px solid #2b7a78;
+  border-bottom: 3px solid #2b7a78;
 }
 
 .ticketCreate__field {
@@ -31,32 +33,7 @@
   resize: none;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-/*** TABLES STYLING ***/
-table {
-  text-align: left;
-  width: 100%;
-  border-collapse: collapse;
-  background-color: #d8e6df;
-}
-
-thead {
-  background-color: #344b48;
-  color: white;
-}
-
-tr {
-  border-bottom: 1px solid black;
-}
-
-tbody tr:nth-child(even) {
-  background-color: #96b1ac;
-}
-
-th,
-td {
-  padding: 1em;
-}
-
+/* 
 .ticketDetailsBtn,
 .inputBtn {
   font-family: "Cabin", sans-serif;
@@ -72,4 +49,4 @@ td {
 .inputBtn:hover {
   cursor: pointer;
   background-color: grey;
-}
+} */

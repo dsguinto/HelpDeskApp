@@ -3,6 +3,7 @@
 /*** GENERAL STYLING ***/
 html {
   font-family: "Cabin", sans-serif;
+  color: #17252a;
 }
 
 *,
@@ -19,10 +20,12 @@ html {
 
 body {
   margin: 0 auto;
+  background-color: #feffff;
 }
 
 h1 {
   font-weight: 700;
+  color: #17252a;
 }
 
 p {
@@ -31,7 +34,7 @@ p {
 
 /*** HEADER STYLING ***/
 header {
-  background-color: #3a8e84;
+  background-color: #3aafa9;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -41,10 +44,10 @@ header {
 
 .loginBtn,
 .logoutBtn {
-  color: black;
+  color: #17252a;
   font-size: 18px;
   padding: 0.5em 1em;
-  background-color: #ecfdfa;
+  background-color: #def2f1;
   text-decoration: none;
   border-radius: 15px;
   transition: 300ms;
@@ -54,8 +57,7 @@ header {
 .loginBtn:active,
 .logoutBtn:hover,
 .logoutBtn:active {
-  color: black;
-  background-color: lightsteelblue;
+  background-color: #feffff;
 }
 
 .headerContent {
@@ -75,12 +77,12 @@ table {
   text-align: left;
   width: 100%;
   border-collapse: collapse;
-  background-color: #d8e6df;
+  background-color: #c9e0df;
 }
 
 thead {
-  background-color: #344b48;
-  color: white;
+  background-color: #17252a;
+  color: #feffff;
 }
 
 tr {
@@ -88,7 +90,7 @@ tr {
 }
 
 tbody tr:nth-child(even) {
-  background-color: #96b1ac;
+  background-color: #9eb8b6;
 }
 
 th,
@@ -99,10 +101,10 @@ td {
 .ticketDetailsBtn,
 .inputBtn {
   font-family: "Cabin", sans-serif;
-  background-color: #344b48;
+  background-color: #17252a;
   color: white;
   padding: 0.5em 1em;
-  border: 1px solid black;
+  border: 1px solid #17252a;
   border-radius: 10px;
   transition: 100ms;
 }
@@ -110,7 +112,7 @@ td {
 .ticketDetailsBtn:hover,
 .inputBtn:hover {
   cursor: pointer;
-  background-color: grey;
+  background-color: #2b7a78;
 }
 
 /*** USER/ADMIN VIEW STYLING ***/

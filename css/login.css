@@ -2,9 +2,11 @@
 .login {
   margin: 3em auto 0 auto;
   width: 50%;
-  background-color: lightgrey;
+  background-color: #def2f1;
   padding: 1em 2em;
   border-radius: 25px;
+  border-left: 3px solid #2b7a78;
+  border-bottom: 3px solid #2b7a78;
 }
 
 .login__field {
@@ -21,4 +23,19 @@
 
 .login__field input {
   width: 150px;
+}
+
+#loginBtn {
+  width: 20%;
+  font-family: "Cabin", sans-serif;
+  background-color: #3aafa9;
+  color: #feffff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.5em 1em;
+  transition: 200ms;
+}
+
+#loginBtn:hover {
+  background-color: #2b7a78;
 }
