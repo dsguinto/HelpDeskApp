@@ -17,13 +17,11 @@ This project is for school purposes. User login credentials would not normally b
 
 MD5 Hashing is used for the sake of the project. Typically, would use password_hash() for better security.
 
-Valid login credentials for the live test can be found at the top of the login.php file.
+Valid login credentials for the live test can be found at the top of the login.php file. Sign Up feature can also be used for the live test.
 
 ## Features to be added:
 
 - List Filtering
-- Create user account
-- Create admin account
 
 ## Screenshots
 

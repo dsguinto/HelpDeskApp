@@ -14,7 +14,7 @@ if($_SESSION['status']!="Logged In")
 
 //Sets user credentials session variables from login data
 $userId = $_SESSION['userId'];
-$firstname = $_SESSION['firstname'];
+$firstnameDisplay = $_SESSION['firstname'];
 
 //Connects adminData.php for page functionality
 require_once "library/adminData.php";
@@ -34,7 +34,7 @@ require_once "library/adminData.php";
     <header>
         <h1>HelpDesk<i class="fas fa-hands-helping"></i></h1>
         <div class="headerContent">
-            <h2>Welcome, <?= $firstname; ?>!</h2>
+            <h2>Welcome, <?= $firstnameDisplay; ?>!</h2>
             <a class="logoutBtn" href="logout.php">Log Out</a>
         </div>
     </header>
@@ -60,6 +60,64 @@ require_once "library/adminData.php";
                 </tbody>
             </table>
         </div>
+        <div class="signUp">
+            <?= $signUpMsg ?>
+            <h2 <?= $hide ?>>Create an Admin Account</h2>
+            <form method="POST" action="" <?= $hide ?>>
+            <div class="signUp__field">
+                    <label for="title">Title: </label>
+                    <select id="title" name="title">
+                        <option value="volvo">Select a Title</option>
+                        <option value="Mr">Mr.</option>
+                        <option value="Mrs">Mrs.</option>
+                        <option value="Ms">Ms.</option>
+                        <option value="Mx">Mx.</option>
+                    </select>
+                    <span></span>
+                </div>
+                <div class="signUp__field">
+                    <label for="firstname">First Name: </label>
+                    <input type="text" name="firstname" id="firstname" />
+                    <span></span>
+                </div>
+                <div class="signUp__field">
+                    <label for="lastname">Last Name: </label>
+                    <input type="text" name="lastname" id="lastname" />
+                    <span></span>
+                </div>
+                <div class="signUp__field">
+                    <label for="email">Email: </label>
+                    <input type="text" name="email" id="email" />
+                    <span></span>
+                </div>
+                <div class="signUp__field">
+                    <label for="username">Username: </label>
+                    <input type="text" name="username" id="username" />
+                    <span></span>
+                </div>
+                <div class="signUp__field">
+                    <label for="password">Password: </label>
+                    <input type="password" name="password" id="password" />
+                    <span></span>
+                </div>
+                <div class="signUp__field">
+                    <label for="country">Country: </label>
+                    <input type="text" name="country" id="country" />
+                    <span></span>
+                </div>
+                <div class="signUp__field">
+                    <label for="city">City: </label>
+                    <input type="text" name="city" id="city" />
+                    <span></span>
+                </div>
+                <p style="color:#ffcccb; text-align:center;"><?= $error; ?></p>
+                <div class="signUp__field">
+                    <input id="signUpBtn" type="submit" name="submitAdmin" value="Create Admin" />
+                </div>
+            </form>
         </div>
+        <footer>
+            <p> &#169; Daniel Guinto, 2021. All Rights Reserved - This is a fake webpage created for HTTP 5203. </p>
+        </footer>
     </body>
 </html>

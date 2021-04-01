@@ -1,4 +1,19 @@
 /*** LOGIN PAGE STYLING ***/
+
+/* .signUpBtn {
+  color: #def2f1;
+  font-size: 18px;
+  padding: 0.5em 1em;
+  background-color: #17252a;
+  text-decoration: none;
+  border-radius: 15px;
+  transition: 300ms;
+}
+
+.signUpBtn:hover {
+  background-color: #3d606d;
+} */
+
 .login {
   margin: 3em auto 0 auto;
   width: 50%;
@@ -19,6 +34,8 @@
 
 .login__field label {
   margin-right: 1em;
+  width: 30%;
+  text-align: right;
 }
 
 .login__field input {
@@ -38,4 +55,48 @@
 
 #loginBtn:hover {
   background-color: #2b7a78;
+}
+
+.signUp {
+  margin: 3em auto;
+  width: 50%;
+  background-color: #3aafa9;
+  padding: 1em 2em;
+  border-radius: 25px;
+  border-left: 3px solid #17252a;
+  border-bottom: 3px solid #17252a;
+}
+
+.signUp__field {
+  margin: 1em auto;
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.signUp__field label {
+  margin-right: 1em;
+  width: 30%;
+  text-align: right;
+}
+
+.signUp__field input,
+.signUp__field select {
+  width: 150px;
+}
+
+#signUpBtn {
+  width: 20%;
+  font-family: "Cabin", sans-serif;
+  background-color: #def2f1;
+  color: #17252a;
+  border: none;
+  border-radius: 10px;
+  padding: 0.5em 1em;
+  transition: 200ms;
+}
+
+#signUpBtn:hover {
+  background-color: #feffff;
 }

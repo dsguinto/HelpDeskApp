@@ -102,5 +102,8 @@ require_once "library/ticketDetailsData.php";
                 </div> 
             </div>
         </div>
+        <footer>
+            <p> &#169; Daniel Guinto, 2021. All Rights Reserved - This is a fake webpage created for HTTP 5203. </p>
+        </footer>
     </body>
 </html>

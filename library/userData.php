@@ -80,6 +80,7 @@ $userTickets = $xpath->query("//ticket[@userId='$userId']");
 
 //Initialize row variable
 $rows = "";
+$hide = "";
 
 //Loops through each ticket element that matches the logged in users userId (using XPath) and gets values to display
 foreach ($userTickets as $ticket){
@@ -103,6 +104,11 @@ foreach ($userTickets as $ticket){
                     </form>
                 </td>';
     $rows .= '</tr>';
+}
+
+if (empty($rows)){
+    $rows = "<h3>You have no tickets to display</h3>";
+    $hide = "style='display:none;'";
 }
 
 ?>

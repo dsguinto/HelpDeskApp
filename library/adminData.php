@@ -1,12 +1,18 @@
 <?php
 //Create DomDocument and loads xml file to be read
-$doc = new DOMDocument();
+$ticketDoc = new DOMDocument();
+$userDoc = new DOMDocument();
+
+//Formats new XML content
+$userDoc->preserveWhiteSpace = false;
+$userDoc->formatOutput = true;
 
 //Loads XML file
-$doc->load("xml/Assignment1_SupportTicket.xml");
+$ticketDoc->load("xml/Assignment1_SupportTicket.xml");
+$userDoc->load("xml/Assignment1_Users.xml");
 
 //Gathers/Sets variables from XML elements
-$tickets = $doc->getElementsByTagName("ticket");
+$tickets = $ticketDoc->getElementsByTagName("ticket");
 
 //Initialize variables
 $ticketId = "";
@@ -33,4 +39,76 @@ foreach ($tickets as $ticket){
     $rows .= '</tr>';
 }
 
+//Initialize variables
+$error = "";
+$hide = "";
+$signUpMsg = "";
+
+    //Checks if Create Admin button is clicked
+    if (isset($_POST["submitAdmin"])){
+        //Saves POST data as variables
+        $title = $_POST['title'];
+        $firstname = $_POST["firstname"];
+        $lastname = $_POST["lastname"];
+        $email = $_POST["email"];
+        $username = $_POST["username"];
+        $password = md5($_POST["password"]);
+        $country = $_POST["country"];
+        $city = $_POST["city"];
+
+        //Checks for empty fields, returns error is missing data
+        if (empty($firstname) || empty($lastname) || empty($email) || empty($username) || empty($password) || empty($country) || empty($city)){
+            $error = "Please input all information.";
+            $userId = $_SESSION['userId'];
+            $firstnameDisplay = $_SESSION['firstname'];
+        }
+
+        else{ 
+            //Keeps current login info displayed
+            $userId = $_SESSION['userId'];
+            $firstnameDisplay = $_SESSION["firstname"];
+
+            //Creates elements and their corresponding attribute (if applicable) for new ticket
+            $newUser = $userDoc->createElement("user");
+            $newUser->setAttribute("userType", "admin");//Make into random number 
+            $newUser->setAttribute("userId", rand(40000, 90000));//Make into random number 
+            $newUser->setAttribute("title", $title);
+
+            $newName = $userDoc->createElement("name");
+            $newFirst = $userDoc->createElement("first", $firstname);
+            $newLast = $userDoc->createElement("last", $lastname);
+
+            $newEmail = $userDoc->createElement("email", $email);
+
+            $newUsername = $userDoc->createElement("username", $username);
+            $newPassword = $userDoc->createElement("password", $password);
+
+            $newLocation = $userDoc->createElement("location");
+            $newCountry = $userDoc->createElement("country", $country);
+            $newCity = $userDoc->createElement("city", $city);
+
+            //Append child elements to parent elements
+            $newName->appendChild($newFirst);
+            $newName->appendChild($newLast);
+
+            $newLocation->appendChild($newCountry);
+            $newLocation->appendChild($newCity);
+
+            $newUser->appendChild($newName);
+            $newUser->appendChild($newEmail);
+            $newUser->appendChild($newUsername);
+            $newUser->appendChild($newPassword);
+            $newUser->appendChild($newLocation);
+
+            $userDoc->documentElement->appendChild($newUser);
+
+            //Saves updates to xml file
+            $userDoc->save("xml/Assignment1_Users.xml");
+
+            //Displays respective messages
+            $hide = "style='display: none;'";
+            $signUpMsg = "<h2 style='text-align: center'>The admin account was successfully made! </br> You may use the Login page to access the account.";
+
+        }
+    }
 ?>

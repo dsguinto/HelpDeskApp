@@ -19,6 +19,7 @@ $xmlUsername = "";
 $xmlPassword = "";
 $firstname = "";
 $error = "";
+$error2 = "";
 
 
 //Checks if login button is clicked
@@ -64,6 +65,80 @@ if (isset($_POST["submitLogin"])){
 
 }
 
+$hide = "";
+$signUpMsg = "";
+
+    //Checks if Sign Up button is clicked
+    if (isset($_POST["submitSignUp"])){
+        //Saves POST data as variables
+        $title = $_POST['title'];
+        $firstname = $_POST["firstname"];
+        $lastname = $_POST["lastname"];
+        $email = $_POST["email"];
+        $username = $_POST["username"];
+        $password = md5($_POST["password"]);
+        $country = $_POST["country"];
+        $city = $_POST["city"];
+
+        //Checks for empty fields, returns error is missing data
+        if (empty($firstname) || empty($lastname) || empty($email) || empty($username) || empty($password) || empty($country) || empty($city)){
+            $error2 = "Please input all information.";
+        }
+
+        else{
+            //Create DomDocument
+            $doc = new DOMDocument();
+
+            //Formats new XML content
+            $doc->preserveWhiteSpace = false;
+            $doc->formatOutput = true;
+
+            //Loads XML file
+            $doc->load("xml/Assignment1_Users.xml");
+
+            //Creates elements and their corresponding attribute (if applicable) for new ticket
+            $newUser = $doc->createElement("user");
+            $newUser->setAttribute("userType", "client");//Make into random number 
+            $newUser->setAttribute("userId", rand(40000, 90000));//Make into random number 
+            $newUser->setAttribute("title", $title);
+
+            $newName = $doc->createElement("name");
+            $newFirst = $doc->createElement("first", $firstname);
+            $newLast = $doc->createElement("last", $lastname);
+
+            $newEmail = $doc->createElement("email", $email);
+
+            $newUsername = $doc->createElement("username", $username);
+            $newPassword = $doc->createElement("password", $password);
+
+            $newLocation = $doc->createElement("location");
+            $newCountry = $doc->createElement("country", $country);
+            $newCity = $doc->createElement("city", $city);
+
+            //Append child elements to parent elements
+            $newName->appendChild($newFirst);
+            $newName->appendChild($newLast);
+
+            $newLocation->appendChild($newCountry);
+            $newLocation->appendChild($newCity);
+
+            $newUser->appendChild($newName);
+            $newUser->appendChild($newEmail);
+            $newUser->appendChild($newUsername);
+            $newUser->appendChild($newPassword);
+            $newUser->appendChild($newLocation);
+
+            $doc->documentElement->appendChild($newUser);
+
+            //Saves updates to xml file
+            $doc->save("xml/Assignment1_Users.xml");
+
+            //Displays respective messages
+            $hide = "style='display: none;'";
+            $signUpMsg = "<h2 style='text-align: center'>Your sign up was successful! </br> Please proceed with signing in with your credentials.";
+
+        }
+    }
 ?>
 
 

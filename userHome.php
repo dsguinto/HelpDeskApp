@@ -60,7 +60,7 @@ require_once "library/userData.php";
             </div>
             <div class="ticketList">
                 <h2>Support Tickets</h2>
-                <table class="supportTickets">
+                <table class="supportTickets" <?= $hide ?>>
                     <thead>
                         <tr>
                             <th>Ticket ID</th>
@@ -79,5 +79,8 @@ require_once "library/userData.php";
                 </table>
             </div>
         </div>
+        <footer>
+            <p> &#169; Daniel Guinto, 2021. All Rights Reserved - This is a fake webpage created for HTTP 5203. </p>
+        </footer>
     </body>
 </html>

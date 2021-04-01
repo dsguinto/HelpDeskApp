@@ -1,25 +1,28 @@
 <?php
 
 //Create DomDocument and loads xml file to be read
-$doc = new DOMDocument();
+$ticketDoc = new DOMDocument();
+$userDoc = new DOMDocument();
 
 //Formats new XML content
-$doc->preserveWhiteSpace = false;
-$doc->formatOutput = true;
+$ticketDoc->preserveWhiteSpace = false;
+$ticketDoc->formatOutput = true;
 
 //Loads XML file
-$doc->load("xml/Assignment1_SupportTicket.xml");
+$ticketDoc->load("xml/Assignment1_SupportTicket.xml");
+$userDoc->load("xml/Assignment1_Users.xml");
 
 //Sets variables
 $error = "";
-$postMessage = $doc->getElementsByTagName("postMessage");
+$postMessage = $ticketDoc->getElementsByTagName("postMessage");
 $date = new DateTime("NOW", new DateTimeZone('America/Toronto'));
 
 //Sets up XPath 
-$xpath = new DOMXPath($doc);
+$ticketXPath = new DOMXPath($ticketDoc);
+$userXPath = new DOMXPath($userDoc);
 
 //Uses XPath to find the ticket element that matches the ticketId associated with the ticket wanting to be viewed (to be used in foreach loops to gather data within it)
-$ticketDetails = $xpath->query("//ticket[@ticketId='$ticketId']");
+$ticketDetails = $ticketXPath->query("//ticket[@ticketId='$ticketId']");
 
 //Adds message to XML file when submitted
 if (isset($_POST["submitMessage"])){
@@ -38,11 +41,11 @@ if (isset($_POST["submitMessage"])){
         $error = "";
         
         //Creates new message element for respective ticket
-        $newMessage = $doc->createElement("message");
+        $newMessage = $ticketDoc->createElement("message");
         $newMessage->setAttribute("userId", $userId);
 
-        $messageText = $doc->createElement("messageText", $postMessage);
-        $messageDate = $doc->createElement("messageDate", $date->format('Y-m-d\TH:i:s'));
+        $messageText = $ticketDoc->createElement("messageText", $postMessage);
+        $messageDate = $ticketDoc->createElement("messageDate", $date->format('Y-m-d\TH:i:s'));
 
         //Append child elements to parent elements
         $newMessage->appendChild($messageText);
@@ -54,7 +57,7 @@ if (isset($_POST["submitMessage"])){
         }
 
         //Saves updates to xml file
-        $doc->save("xml/Assignment1_SupportTicket.xml");
+        $ticketDoc->save("xml/Assignment1_SupportTicket.xml");
 
         //Redirects user to respective page (in this situation, same page but updated)
         header( "Location: {$_SERVER['REQUEST_URI']}", true, 303 );
@@ -63,7 +66,7 @@ if (isset($_POST["submitMessage"])){
 }
 
 //XPath query to check message node of ticket with specified ticketId value
-$messageDetails =  $xpath->query("//ticket[@ticketId='$ticketId']//message");
+$messageDetails =  $ticketXPath->query("//ticket[@ticketId='$ticketId']//message");
 
 //Initialize variables
 $dateCreated = "";
@@ -82,12 +85,40 @@ $status = $ticket->attributes->getNamedItem("status")->nodeValue;
 //Loops through message element for corresponding ticket to display message data
 foreach ($messageDetails  as $ticket){
     $user = $ticket->attributes->getNamedItem("userId")->nodeValue;
+    $userStr = strval($user); //Converts userID (positiveInteger data type) to string, to be used for IF statement below
     $messageText = $ticket->getElementsByTagName("messageText")->item(0)->nodeValue;
+
     //Gets messageDate value and converts it to DateTime data type and formats date for table
     $messageDate = new DateTime($ticket->getElementsByTagName("messageDate")->item(0)->nodeValue);
     $dateSent = date_format($messageDate , 'Y-m-d,  H:i:s');
+
+    //XPath query to check User xml file to grab data to display
+    $userDetails =  $userXPath->query("//user[@userId='$user']");
+
+    //Checks data of user with specified userid to get title and last to display on messages
+    foreach ($userDetails as $user){
+        $title = $user->attributes->getNamedItem("title")->nodeValue;
+        $userType = $user->attributes->getNamedItem("userType")->nodeValue;
+        $lastname = $user->getElementsByTagName("last")->item(0)->nodeValue;
+    }
+
+    //strcmp Statement to check compare user ids, determines display over message bubble
+    if ((strcmp($userStr, $_SESSION['userId'])) !== 0) {
+        //Checks usertype to see if it should show "admin" in message
+        if ($userType == "client"){
+        $userDisplay = $title . ". " . $lastname . " says: ";
+        }
+        else{
+            $userDisplay = $title . ". " . $lastname . " (Admin) says: ";
+        }
+    }
+    else {
+       $userDisplay = "You said:";
+    }
+
+    //Creates message boxes with all specified details within it
     $rows .= '<div class="messageText">';
-    $rows .= '<p class="userId">User ID: '  . $user . '</p>';
+    $rows .= '<p class="userId">'  . $userDisplay . '</p>';
     $rows .= '<p class="messageBox">'  . $messageText . '</p>';
     $rows .= '<p class="dateSent">'  . $dateSent . '</p>';
     $rows .= '</div>';
@@ -104,7 +135,7 @@ if (isset($_POST["closeTicket"])){
     }
 
     //Saves updates to xml file
-    $doc->save("xml/Assignment1_SupportTicket.xml");
+    $ticketDoc->save("xml/Assignment1_SupportTicket.xml");
 
     //Redirects user to respective page (in this situation, same page but updated)
     header( "Location: {$_SERVER['REQUEST_URI']}", true, 303 );
@@ -122,20 +153,20 @@ if (isset($_POST["openTicket"])){
     }
 
     //Saves updates to xml file
-    $doc->save("xml/Assignment1_SupportTicket.xml");
+    $ticketDoc->save("xml/Assignment1_SupportTicket.xml");
 
     //Redirects user to respective page (in this situation, same page but updated)
     header( "Location: {$_SERVER['REQUEST_URI']}", true, 303 );
     exit();
 }
 
-//Initializes display of Close/Open ticket feature
-$styleCloseBtn = "style='display:none;'";
-$styleOpenBtn = "style='display:none;'";
-$styleDisplayForm = "style='display:none;'";
-$styleDisplayMsg = "style='display:none;'";
+    //Initializes display of Close/Open ticket feature
+    $styleCloseBtn = "style='display:none;'";
+    $styleOpenBtn = "style='display:none;'";
+    $styleDisplayForm = "style='display:none;'";
+    $styleDisplayMsg = "style='display:none;'";
 
-//Checks status of ticket, displays corresponding button/message depending on status
+    //Checks status of ticket, displays corresponding button/message depending on status
     if ($status == "resolved"){
         $styleDisplayMsg = "style='display:block;'";
         $styleOpenBtn = "style='display:block;'";

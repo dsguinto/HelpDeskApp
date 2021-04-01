@@ -1,43 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <users xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Assignment1_Users.xsd">
-    <user userType="client" userId="53021" title="Mr">
-        <name>
-            <first>Alex</first>
-            <last>Martinez</last>
-        </name>
-        <email>alexmartinez@gmail.com</email>
-        <username>A_Martinez92</username>
-        <password>66a2d152001817c2dec8218a783021ba</password>
-        <location>
-            <country>Canada</country>
-            <city>Toronto</city>
-        </location>
-    </user>
-    <user userType="client" userId="52912" title="Mr">
-        <name>
-            <first>Owen</first>
-            <last>Johnson</last>
-        </name>
-        <email>owenjohnson@yahoo.com</email>
-        <username>owen_johnson</username>
-        <password>d02d7eac3daf18e3de612079d2ab5a7f</password>
-        <location>
-            <country>Canada</country>
-            <city>Brampton</city>
-        </location>
-    </user>
-    <user userType="admin" userId="49201" title="Ms">
-        <name>
-            <first>Joanna</first>
-            <last>Smith</last>
-        </name>
-        <email>joannasmith96@hotmail.com</email>
-        <username>jsmith01</username>
-        <password>2e825c67e0053a2a240dae4b48c99617</password>
-        <location>
-            <country>USA</country>
-            <city>New York</city>
-        </location>
-    </user>
+  <user userType="client" userId="53021" title="Mr">
+    <name>
+      <first>Alex</first>
+      <last>Martinez</last>
+    </name>
+    <email>alexmartinez@gmail.com</email>
+    <username>A_Martinez92</username>
+    <password>66a2d152001817c2dec8218a783021ba</password>
+    <location>
+      <country>Canada</country>
+      <city>Toronto</city>
+    </location>
+  </user>
+  <user userType="client" userId="52912" title="Mr">
+    <name>
+      <first>Owen</first>
+      <last>Johnson</last>
+    </name>
+    <email>owenjohnson@yahoo.com</email>
+    <username>owen_johnson</username>
+    <password>d02d7eac3daf18e3de612079d2ab5a7f</password>
+    <location>
+      <country>Canada</country>
+      <city>Brampton</city>
+    </location>
+  </user>
+  <user userType="admin" userId="49201" title="Ms">
+    <name>
+      <first>Joanna</first>
+      <last>Smith</last>
+    </name>
+    <email>joannasmith96@hotmail.com</email>
+    <username>jsmith01</username>
+    <password>2e825c67e0053a2a240dae4b48c99617</password>
+    <location>
+      <country>USA</country>
+      <city>New York</city>
+    </location>
+  </user>
+  <user userType="client" userId="51251" title="Mr">
+    <name>
+      <first>Daniel</first>
+      <last>Guinto</last>
+    </name>
+    <email>danielguinto@yahoo.ca</email>
+    <username>dguinto</username>
+    <password>cc03e747a6afbbcbf8be7668acfebee5</password>
+    <location>
+      <country>Canada</country>
+      <city>Brampton</city>
+    </location>
+  </user>
+  <user userType="admin" userId="41865" title="Mrs">
+    <name>
+      <first>Amy</first>
+      <last>Lee</last>
+    </name>
+    <email>alee123@hotmail.com</email>
+    <username>amy_lee123</username>
+    <password>f3b2bcaf2b3138bb9c717d626fe14073</password>
+    <location>
+      <country>USA</country>
+      <city>Los Angeles</city>
+    </location>
+  </user>
+  <user userType="admin" userId="65955" title="Mr">
+    <name>
+      <first>John</first>
+      <last>Doe</last>
+    </name>
+    <email>john_doe@gmail.com</email>
+    <username>jdoe99</username>
+    <password>c14de22189540ca034ae0fae761e2a4e</password>
+    <location>
+      <country>Canada</country>
+      <city>Vancouver</city>
+    </location>
+  </user>
 </users>
