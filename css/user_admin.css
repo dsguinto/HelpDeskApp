@@ -33,23 +33,6 @@
   resize: none;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-/* 
-.ticketDetailsBtn,
-.inputBtn {
-  font-family: "Cabin", sans-serif;
-  background-color: #344b48;
-  color: white;
-  padding: 0.5em 1em;
-  border: 1px solid black;
-  border-radius: 10px;
-  transition: 100ms;
-}
-
-.ticketDetailsBtn:hover,
-.inputBtn:hover {
-  cursor: pointer;
-  background-color: grey;
-} */
 
 .signUp {
   margin: 3em auto;

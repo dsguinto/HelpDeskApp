@@ -4,6 +4,8 @@ For an XML course, I was required to create an 2 XML files for a support ticket 
 
 Once those XML files were created and populated with mock data, I was required to use PHP to create a functional support ticket system application using the data from the XML files. This included a login/logout function, displaying of tickets (user specific), ability to create a ticket, respond to tickets, and close/re-open exisiting tickets. PHP DOM methods were used to read and write to the XML files.
 
+## [Live Demo Here](https://danielguinto.com/HelpDesk/login.php)
+
 ## Langauges and Tools Used:
 
 - XML

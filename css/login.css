@@ -1,19 +1,5 @@
 /*** LOGIN PAGE STYLING ***/
 
-/* .signUpBtn {
-  color: #def2f1;
-  font-size: 18px;
-  padding: 0.5em 1em;
-  background-color: #17252a;
-  text-decoration: none;
-  border-radius: 15px;
-  transition: 300ms;
-}
-
-.signUpBtn:hover {
-  background-color: #3d606d;
-} */
-
 .login {
   margin: 3em auto 0 auto;
   width: 50%;
