@@ -7,7 +7,7 @@ require_once "library/loginData.php";
 session_start();
 
 //Checks if user is logged in, if not redirects user to login page
-if($_SESSION['status']!="Logged In")
+if($_SESSION['status']!="Logged In" || ($_SESSION['userType']!="admin"))
 {
     header("Location: ./login.php");
 }
