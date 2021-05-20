@@ -23,7 +23,6 @@ require_once "library/loginData.php";
     </head>
     <header>
         <h1>HelpDesk<i class="fas fa-hands-helping"></i></h1>
-        <a class="loginBtn" href="login.php">Log In</a>
     </header>
     <body>
         <div class="login">

@@ -64,7 +64,6 @@
 }
 
 #signUpBtn {
-  width: 20%;
   font-family: "Cabin", sans-serif;
   background-color: #def2f1;
   color: #17252a;
@@ -76,4 +75,5 @@
 
 #signUpBtn:hover {
   background-color: #feffff;
+  cursor: pointer;
 }

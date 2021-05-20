@@ -73,6 +73,11 @@ header {
 }
 
 /*** TABLES STYLING ***/
+.tableWrapper {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
 table {
   text-align: left;
   width: 100%;

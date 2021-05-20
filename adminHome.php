@@ -42,23 +42,25 @@ require_once "library/adminData.php";
         <div class="page">
         <div class="ticketList">
             <h2>Support Tickets - Admin Portal</h2>
-            <table class="supportTickets">
-                <thead>
-                    <tr>
-                        <th>Ticket ID</th>
-                        <th>Subject</th>
-                        <th>Creation Date</th>
-                        <th>Status</th>
-                        <th>Client ID</th>
-                        <th>View</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                        echo $rows;
-                    ?>
-                </tbody>
-            </table>
+            <div class="tableWrapper">
+                <table class="supportTickets">
+                    <thead>
+                        <tr>
+                            <th>Ticket ID</th>
+                            <th>Subject</th>
+                            <th>Creation Date</th>
+                            <th>Status</th>
+                            <th>Client ID</th>
+                            <th>View</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            echo $rows;
+                        ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="signUp">
             <?= $signUpMsg ?>
